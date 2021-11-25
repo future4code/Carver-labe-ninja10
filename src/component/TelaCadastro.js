@@ -55,6 +55,7 @@ export default class TelaCadastro extends React.Component{
                 onChange={this.handleprice}
                 />
                 <button>Cadastrar</button>
+                <button onClick={this.props.goToPageSearch}>ir para tela de filtros</button>
 
                  </div>
 
