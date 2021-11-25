@@ -30,10 +30,10 @@ export default class Header extends React.Component {
     render() {
       return (
       
-    
+          
           <HeaderContainer>
             <ContainerBotao>
-            <button>Home</button>
+            <button onClick={this.props.goToTelaHome}>Home</button>
             <button>Carrinho</button>
             </ContainerBotao>
             <h2>LabeNinjas</h2>

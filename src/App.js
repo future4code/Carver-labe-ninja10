@@ -30,6 +30,9 @@ export default class APP extends React.Component {
   goToTelaCadastro = () => {
     this.setState({ page: "TelaCadastro" });
   };
+  goToTelaHome = () => {
+    this.setState({ page: "HomePage" });
+  };
 
   goToPageSearch = () => {
     this.setState({ page: "PageSearch" });
@@ -42,7 +45,7 @@ export default class APP extends React.Component {
   render() {
     return( 
 	    <div> 
-		<Header/>
+		<Header goToTelaHome={this.goToTelaHome}/>
 		{this.selectPage()}
 		</div>
 	)
