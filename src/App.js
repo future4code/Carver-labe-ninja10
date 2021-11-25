@@ -4,6 +4,7 @@ import TelaCadastro from './component/TelaCadastro';
 import PageDetalhes from './component/PageDetalhes/PageDetalhes';
 import HomePage from "./component/HomePage/HomePage";
 import Header from "./component/Header/Header";
+import Footer from "./component/Footer/Footer";
 
 
 
@@ -47,6 +48,7 @@ export default class APP extends React.Component {
 	    <div> 
 		<Header goToTelaHome={this.goToTelaHome}/>
 		{this.selectPage()}
+		<Footer/>
 		</div>
 	)
   }

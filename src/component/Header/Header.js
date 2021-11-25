@@ -38,6 +38,7 @@ export default class Header extends React.Component {
             </ContainerBotao>
             <h2>LabeNinjas</h2>
           </HeaderContainer>
+          
     )
   }
 }
