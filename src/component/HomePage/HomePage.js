@@ -7,11 +7,12 @@ const Root = styled.div`
 margin: 0;
 padding: 0;
 
+
 `
 
 const ContainerCard = styled.div`
 display:flex;
-height: 100vh;
+height: 88vh;
 justify-content: space-around;
 align-items: center;
 
@@ -20,7 +21,7 @@ const Card = styled.div`
 display: flex;
 flex-direction: column;
 height: 200px;
-margin-top: -240px;
+margin-top: -341px;
 width: 500px;
 justify-content: space-around;
 align-items: center;
@@ -38,7 +39,6 @@ align-items: center;
 }
 `
 const CardImagem = styled.div`
-border: 1px solid black;
 padding: 40px;
 background-color: #B2C9AB;
 border-radius: 100px;
@@ -60,6 +60,7 @@ export default class HomePage extends React.Component {
            <img src={image}></img> 
           </CardImagem>
           </ContainerCard>
+          
       </Root>
     )
   }
