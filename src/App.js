@@ -2,13 +2,14 @@ import React from "react";
 import PageSearch from "./component/PageSearch/PageSearch";
 import TelaCadastro from './component/TelaCadastro';
 import PageDetalhes from './component/PageDetalhes/PageDetalhes';
-
+import HomePage from "./component/HomePage/HomePage";
+import Header from "./component/Header/Header";
 
 
 
 export default class APP extends React.Component {
   state = {
-    page: "TelaCadastro"
+    page: "HomePage"
   };
 
   selectPage = () => {
@@ -19,6 +20,8 @@ export default class APP extends React.Component {
         return <PageSearch goToTelaCadastro={this.goToTelaCadastro} goToPageDetahes={this.goToPageDetahes}/>;
       case "PageDetalhes":
         return <PageDetalhes goToPageSearch={this.goToPageSearch} />;
+	   case "HomePage":
+        return <HomePage  goToTelaCadastro={this.goToTelaCadastro} goToPageSearch={this.goToPageSearch}/>;
       default:
         return <TelaCadastro/>;
     }
@@ -37,6 +40,11 @@ export default class APP extends React.Component {
   };
 
   render() {
-    return <div>{this.selectPage()}</div>;
+    return( 
+	    <div> 
+		<Header/>
+		{this.selectPage()}
+		</div>
+	)
   }
 }
