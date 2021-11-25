@@ -1,10 +1,16 @@
+
 import React from 'react'
-import { AppContainer } from './components/AppContainer'
+import TelaCadastro from './component/TelaCadastro'
 
-function App() {
-	return (
-        <AppContainer />
-	)
-}
-
-export default App
+export default class App  extends React.Component {
+	render(){
+		return (
+			<div>olá
+				<TelaCadastro/>
+			</div>
+	
+		)
+	}
+	
+	
+	}
