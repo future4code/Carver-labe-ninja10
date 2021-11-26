@@ -1,8 +1,5 @@
 import axios from "axios";
 import React from "react";
-import { ButtonsDiv, DivCard } from "./StyledPageSearch";
-import { DivPai } from "./StyledPageSearch";
-
 
 export default class PageSearch extends React.Component {
     state = {
@@ -45,22 +42,22 @@ export default class PageSearch extends React.Component {
 
 
   onChangeFilter = (event) => {
-    this.setState({ order: event.target.value });
+    this.setState({ ordem: event.target.value });
   };
   
-    onChangeFilterName = (event) => {
-        this.setState({ filterName: event.target.value})
-       
-
+    UpdateFilterName = (event) => {
+        this.setState({
+            filterName: event.target.value
+        })
     }
 
-    onChangeMinPrice = (event) => {
+    UpdateMinPrice = (event) => {
         this.setState({
             minPrice: event.target.value
         })
     }
 
-    onChangeMaxPrice = (event) => {
+    UpdateMaxPrice = (event) => {
         this.setState({
             maxPrice: event.target.value
         })
@@ -100,41 +97,35 @@ export default class PageSearch extends React.Component {
 
     render() {
         this.orderSelect();
-        const filtroArrayJobs = this.filtroJobs(
+        let filtroArrayJobs = this.filtroJobs(
             this.state.minPrice,
             this.state.maxPrice,
             this.state.filterName
         );
         const getJobs = this.state.JobsList.map((jobs) => (
-            <DivCard key={jobs.id}>
+            <div key={jobs.id}>
                 <h1>{jobs.title}</h1>
                 <p> Até {jobs.dueDate} por R$ {jobs.price},00</p>
-                <ButtonsDiv>
                 <button onClick={this.props.goToPageDetahes}>ver detalhes</button>
                 <button>Adicionar ao Carrinho</button>
-                </ButtonsDiv>
-                
-            </DivCard>
-          
+            </div>
         ));
         return (
             <div>
-                <input type="text" placeholder={"Pesquisar pelo nome"} value={this.state.filterName} onChange={this.onChangeFilterName}/>
+                <input type="text" placeholder={"Pesquisar pelo nome"} value={this.state.filterName} onChange={this.UpdateFilterName}/>
                 <select onChange={this.onChangeFilter}>
-                    <option value="maxPrice"> Maior preço</option>
+                    <option value="">Todos </option>
+                    <option value="maxPrice" > Maior preço</option>
                     <option value="minPrice" >Menor preço </option>
                     <option value="titleFilter">Título</option>
                     <option value="data"> Prazo</option>
                 </select>
-                <input type="number" min="0" placeholder={"min price"} value={this.state.minPrice} onChange={this.onChangeMinPrice}/>
-                <input type="number" min="0" placeholder={"max price"} value={this.state.maxPrice} onChange={this.onChangeMaxPrice}  />
+                <input type="number" min="0" placeholder={"min price"} value={this.state.minPrice} onChange={this.UpdateMinPrice}/>
+                <input type="number" min="0" placeholder={"max price"} value={this.state.maxPrice} onChange={this.UpdateMaxPrice}  />
                 <button onClick={this.limparFiltro}>Limpar</button>
-                <p>{filtroArrayJobs.length} encontrados</p>
+                <p>{filtroArrayJobs.length} Serviços oferecidos</p>
                 <button onClick={this.props.goToTelaCadastro}> ir para tela cadastro  </button>
-                <DivPai>
                 {getJobs}
-                </DivPai>
-               
             </div>
         );
     }
