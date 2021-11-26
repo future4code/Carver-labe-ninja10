@@ -24,7 +24,7 @@ export default class APP extends React.Component {
 	   case "HomePage":
         return <HomePage  goToTelaCadastro={this.goToTelaCadastro} goToPageSearch={this.goToPageSearch}/>;
       default:
-        return <TelaCadastro/>;
+        return <HomePage/>;
     }
   };
 
