@@ -34,7 +34,7 @@ export default class Header extends React.Component {
           <HeaderContainer>
             <ContainerBotao>
             <button onClick={this.props.goToTelaHome}>Home</button>
-            <button>Carrinho</button>
+            <button onClick={this.props.goToTelaCarrinho}>Carrinho</button>
             </ContainerBotao>
             <h2>LabeNinjas</h2>
           </HeaderContainer>
