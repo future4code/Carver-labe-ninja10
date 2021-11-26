@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-
+import {DivPai, DivCard, DivSearch, ButtonsDiv} from './StyledPageSearch';
 export default class PageSearch extends React.Component {
     state = {
         JobsList: [],
@@ -42,7 +42,7 @@ export default class PageSearch extends React.Component {
 
 
   onChangeFilter = (event) => {
-    this.setState({ ordem: event.target.value });
+    this.setState({ order: event.target.value });
   };
   
     UpdateFilterName = (event) => {
@@ -103,15 +103,22 @@ export default class PageSearch extends React.Component {
             this.state.filterName
         );
         const getJobs = this.state.JobsList.map((jobs) => (
-            <div key={jobs.id}>
+        
+            <DivCard key={jobs.id}>
                 <h1>{jobs.title}</h1>
                 <p> Até {jobs.dueDate} por R$ {jobs.price},00</p>
+                <ButtonsDiv>
                 <button onClick={this.props.goToPageDetahes}>ver detalhes</button>
                 <button>Adicionar ao Carrinho</button>
-            </div>
+                </ButtonsDiv>
+            </DivCard>
+         
         ));
         return (
             <div>
+
+            
+            <DivSearch>
                 <input type="text" placeholder={"Pesquisar pelo nome"} value={this.state.filterName} onChange={this.UpdateFilterName}/>
                 <select onChange={this.onChangeFilter}>
                     <option value="">Todos </option>
@@ -125,7 +132,13 @@ export default class PageSearch extends React.Component {
                 <button onClick={this.limparFiltro}>Limpar</button>
                 <p>{filtroArrayJobs.length} Serviços oferecidos</p>
                 <button onClick={this.props.goToTelaCadastro}> ir para tela cadastro  </button>
-                {getJobs}
+                </DivSearch>
+            <DivPai>
+            {getJobs}
+
+            </DivPai>
+              
+          
             </div>
         );
     }
