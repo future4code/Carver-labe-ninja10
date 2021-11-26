@@ -5,6 +5,7 @@ import PageDetalhes from './component/PageDetalhes/PageDetalhes';
 import HomePage from "./component/HomePage/HomePage";
 import Header from "./component/Header/Header";
 import Footer from "./component/Footer/Footer";
+import Carrinho from "./component/Carrinho/Carrinho";
 
 
 
@@ -22,12 +23,16 @@ export default class APP extends React.Component {
       case "PageDetalhes":
         return <PageDetalhes goToPageSearch={this.goToPageSearch} />;
 	   case "HomePage":
-        return <HomePage  goToTelaCadastro={this.goToTelaCadastro} goToPageSearch={this.goToPageSearch}/>;
+        return <HomePage goToTelaCadastro={this.goToTelaCadastro} goToPageSearch={this.goToPageSearch}/>;
+      case "Carrinho":
+          return <Carrinho goToTelaCarrinho={this.goToTelaCarrinho}/>;
       default:
         return <HomePage/>;
     }
   };
-
+  goToTelaCarrinho = () => {
+    this.setState({ page: "Carrinho" });
+  };
   goToTelaCadastro = () => {
     this.setState({ page: "TelaCadastro" });
   };
@@ -46,10 +51,10 @@ export default class APP extends React.Component {
   render() {
     return( 
 	    <div> 
-		<Header goToTelaHome={this.goToTelaHome}/>
+		<Header goToTelaHome={this.goToTelaHome} goToTelaCarrinho={this.goToTelaCarrinho}/>
 		{this.selectPage()}
 		<Footer/>
 		</div>
-	)
+	 )
   }
 }
