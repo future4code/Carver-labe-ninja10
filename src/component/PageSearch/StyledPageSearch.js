@@ -17,3 +17,10 @@ grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 column-gap: 25px;
 row-gap: 20px;
 `
+
+export const ButtonsDiv = styled.div`
+    border:solid;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+`

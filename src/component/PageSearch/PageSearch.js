@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { DivCard } from "./StyledPageSearch";
+import { ButtonsDiv, DivCard } from "./StyledPageSearch";
 import { DivPai } from "./StyledPageSearch";
 
 
@@ -109,10 +109,10 @@ export default class PageSearch extends React.Component {
             <DivCard key={jobs.id}>
                 <h1>{jobs.title}</h1>
                 <p> Até {jobs.dueDate} por R$ {jobs.price},00</p>
-                <div>
+                <ButtonsDiv>
                 <button onClick={this.props.goToPageDetahes}>ver detalhes</button>
                 <button>Adicionar ao Carrinho</button>
-                </div>
+                </ButtonsDiv>
                 
             </DivCard>
           
