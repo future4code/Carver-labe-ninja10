@@ -4,7 +4,7 @@ export class BotaoCarrinho extends React.Component {
   render() {
     return (
       <div>
-         <button onClick={this.props.irParaContratacao}>Adicionar ao carrinho</button>
+         <button onClick={this.props.paginaContrato}>Ir para Carrinho</button>
       </div>
     )
   }
