@@ -1,3 +1,4 @@
+
 import React from "react";
 import PageSearch from "./component/PageSearch/PageSearch";
 import TelaCadastro from './component/TelaCadastro';
@@ -6,6 +7,9 @@ import HomePage from "./component/HomePage/HomePage";
 import Header from "./component/Header/Header";
 import Footer from "./component/Footer/Footer";
 import Carrinho from "./component/Carrinho/Carrinho";
+import { BotaoCarrinho } from './components/botaoCarrinho'
+import { BotaoContratacao } from './components/botaoContratacao'
+import "./styled.css"
 
 
 
@@ -54,7 +58,14 @@ export default class APP extends React.Component {
 		<Header goToTelaHome={this.goToTelaHome} goToTelaCarrinho={this.goToTelaCarrinho}/>
 		{this.selectPage()}
 		<Footer/>
+       <BotaoContratacao>
+			  <button onClick="contrato">Contratar um ninja</button>
+		  </BotaoContratacao>
+		  <BotaoCarrinho>
+			  <button onClick="carrinho">Adicionar ao carrinho</button>
+		  </BotaoCarrinho>
 		</div>
 	 )
   }
 }
+
