@@ -1,9 +1,9 @@
-*{
+/* *{
     margin: 1px;
     padding: 70px;
-}
+} */
 
-div{
+/* div{
     margin: 1px;
     padding: 1px;
     display: grid;
@@ -13,7 +13,7 @@ h1{
     padding: 10px;
     margin: 1px;
     background-color: 1px solid black;
-}
+} */
 button{
     align-items: center;
     display:flex;
@@ -21,10 +21,10 @@ button{
     padding: 1px;
     font-size: 100%;
 }
-body{
+/* body{
     display: grid;
     margin: 5px;
     justify-items: center;
     padding: 2px;
     
-}
+} */
