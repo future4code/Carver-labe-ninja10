@@ -1,6 +1,13 @@
 import axios from "axios";
 import React from "react";
+
+import { ButtonsDiv, DivCard, DivSearch } from "./StyledPageSearch";
+import { DivPai } from "./StyledPageSearch";
+
+
+
 import {DivPai, DivCard, DivSearch, ButtonsDiv} from './StyledPageSearch';
+
 export default class PageSearch extends React.Component {
     state = {
         JobsList: [],
@@ -23,7 +30,7 @@ export default class PageSearch extends React.Component {
             })
             .then((res) => {
                 this.setState({ JobsList: res.data.jobs });
-                console.log(this.state.JobsList);
+         
             })
             .catch((err) => {
                 console.log(err);
@@ -34,7 +41,7 @@ export default class PageSearch extends React.Component {
 
     orderSelect = () => {
         const orderSelect = this.state.JobsList.sort((a, b) =>
-            this.state.order === "minPrice" ? a.price - b.price : b.price - a.price
+            this.state.order === "minPrice" ? a.price - b.price : b.price - a.price 
         );
         return orderSelect;
     };
@@ -97,11 +104,19 @@ export default class PageSearch extends React.Component {
 
     render() {
         this.orderSelect();
+
+       
+        const filtroArrayJobs = this.filtroJobs(
+
         let filtroArrayJobs = this.filtroJobs(
+
             this.state.minPrice,
             this.state.maxPrice,
             this.state.filterName
+
         );
+        console.log(filtroArrayJobs)
+      
         const getJobs = this.state.JobsList.map((jobs) => (
         
             <DivCard key={jobs.id}>
@@ -110,6 +125,7 @@ export default class PageSearch extends React.Component {
                 <ButtonsDiv>
                 <button onClick={this.props.goToPageDetahes}>ver detalhes</button>
                 <button>Adicionar ao Carrinho</button>
+
                 </ButtonsDiv>
             </DivCard>
          
@@ -117,9 +133,14 @@ export default class PageSearch extends React.Component {
         return (
             <div>
 
+                <DivSearch>
+                <input type="text" placeholder={"Pesquisar pelo nome"} value={this.state.filterName} onChange={this.onChangeFilterName}/>
+
+
             
             <DivSearch>
                 <input type="text" placeholder={"Pesquisar pelo nome"} value={this.state.filterName} onChange={this.UpdateFilterName}/>
+
                 <select onChange={this.onChangeFilter}>
                     <option value="">Todos </option>
                     <option value="maxPrice" > Maior preço</option>
@@ -127,18 +148,29 @@ export default class PageSearch extends React.Component {
                     <option value="titleFilter">Título</option>
                     <option value="data"> Prazo</option>
                 </select>
+
+                <input type="number" min="0" placeholder={"R$ menor preço"} value={this.state.minPrice} onChange={this.onChangeMinPrice}/>
+                <input type="number" min="0" placeholder={"R$ maior preço"} value={this.state.maxPrice} onChange={this.onChangeMaxPrice}  />
+
                 <input type="number" min="0" placeholder={"min price"} value={this.state.minPrice} onChange={this.UpdateMinPrice}/>
                 <input type="number" min="0" placeholder={"max price"} value={this.state.maxPrice} onChange={this.UpdateMaxPrice}  />
+
                 <button onClick={this.limparFiltro}>Limpar</button>
                 <p>{filtroArrayJobs.length} Serviços oferecidos</p>
                 <button onClick={this.props.goToTelaCadastro}> ir para tela cadastro  </button>
                 </DivSearch>
+
+                <DivPai>
+                {getJobs}
+                </DivPai>
+               
+
             <DivPai>
             {getJobs}
 
             </DivPai>
               
-          
+
             </div>
         );
     }
