@@ -1,4 +1,4 @@
-LABE-NINJAS
+*LABE-NINJAS
 Aplicação web inspirada no APP Labe-Ninjas para contratação de serviços.
 Consolidando conhecimentos em Integração com API.
 
