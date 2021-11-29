@@ -15,8 +15,11 @@ import "./styled.css"
 
 export default class APP extends React.Component {
   state = {
-    page: "HomePage"
-  };
+    page: "HomePage",
+    title:"",
+    description:"",
+    price:"",
+  }
 
   selectPage = () => {
     switch (this.state.page) {
@@ -50,6 +53,21 @@ export default class APP extends React.Component {
 
   goToPageDetahes = () => {
     this.setState({ page: "PageDetalhes" });
+  };
+  handledueDate = (event) => {
+    this.setState({ dueDate: event.target.value });
+  };
+  handletitle = (event) => {
+    this.setState({ title: event.target.value });
+  };
+  handledescription = (event) => {
+    this.setState({ description: event.target.value });
+  };
+  handleprice = (event) => {
+    this.setState({ price: event.target.value });
+  };
+  handlepaymentMethods = (event) => {
+    this.setState({ paymentMethods: event.target.value });
   };
 
   render() {
