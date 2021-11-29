@@ -5,8 +5,7 @@ Consolidando conhecimentos em Integração com API.
 Link Surge (Veja na web)
 https://needy-coast.surge.sh/
 
-
-hammer_and_wrench Construído com
+* Construído com
 REACT.JS
 Libs React:
 axios
