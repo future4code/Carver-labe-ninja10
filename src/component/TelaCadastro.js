@@ -1,63 +1,112 @@
 import  React from "react"
-import Axios from "axios"
+import axios from "axios"
+import { DivInput } from "./TelaCadastroStyled";
 
 export default class TelaCadastro extends React.Component{
     state={
-        title:"",
-        description:"",
-        price:"",
+        inputTitle: "",
+        inputDescription: "",
+        inputPrice: "",
+        inputPaymentMethods: [],
+        inputDueDate: ""
      }
-    handletitle=(event)=>{
-        this.setState({title:event.target.value})
-    }
-    handledescription=(event)=>{
-        this.setState({description:event.target.value})
-    }
-    handleprice=(event) =>{
-        this.setState({price:event.target.value})
-    }
-    // fazerCadastro=()=>{
-    //     const url=
-    //     const body={
-    //         title: this.state.title,
-    //         description: this.state.description
-  
-    //     }
+ 
+    onChangeTitle = (event) => {
+        this.setState({ inputTitle: event.target.value });
+      };
+      onChangeDescription = (event) => {
+        this.setState({ inputDescription: event.target.value });
+      };
+      onChangePrice = (event) => {
+        this.setState({ inputPrice: event.target.value });
+      };
+      onChangePaymentMethods = (event) => {
+        this.setState({ inputPaymentMethods: event.target.value });
+      };
+      onChangeDueDate = (event) => {
+        this.setState({ inputDueDate: event.target.value });
+      };
 
-        // axios.post(url,body, {
-        //     headers: {
-        //         Authorization: 
-        //     }
-        // })
-        // .then((res) => {
-        //     alert ("usuario (a) cadastrado com sucesso ") 
-        // })
-        // .catch((err)=>{
-        //     alert("erro ao criar usuario ");
-        // })
 
+      createJob = () => {
+        const url = "https://labeninjas.herokuapp.com/jobs";
+    
+        const body = {
+          title: this.state.inputTitle,
+          description: this.state.inputDescription,
+          price: this.state.inputPrice,
+          paymentMethods: this.state.inputPaymentMethods,
+          dueDate: this.state.inputDueDate
+        };
+        axios
+          .post(url, body, {
+            headers: {
+              Authorization: "a09ea8ed-2736-4486-b536-323e3adceb22"
+            }
+          })
+          .then((res) => {
+            alert("job cadastrado com sucesso");
+            this.setState({
+              inputTitle: "",
+              inputDescription: "",
+              inputPrice: "",
+              inputPaymentMethods: "",
+              inputDueDate: ""
+            });
+            console.log(res);
+          })
+          .catch((err) => {
+            alert(err.response.data.message);
+            console.log(err);
+          });
+      };
     
     render(){
         return(
-            <div>
-                <h2>Cadastro</h2>
-                <input 
-                placeholder={"title"}
-                value={this.state.title}
-                onChange={this.handletitle}/>
-                <input 
-                placeholder={"description"}
-                value={this.state.description}
-                onChange={this.handledescription}/>
-                <input 
-                placeholder={"price"}
-                value={this.state.price}
-                onChange={this.handleprice}
-                />
-                <button>Cadastrar</button>
-                <button onClick={this.props.goToPageSearch}>ir para tela de filtros</button>
-
-                 </div>
+            <DivInput>
+            <input
+              type={"text"}
+              placeholder={"titulo"}
+              value={this.state.inputTitle}
+              onChange={this.onChangeTitle}
+            ></input>
+            <input
+              type={"text"}
+              placeholder={"descrição"}
+              value={this.state.inputDescription}
+              onChange={this.onChangeDescription}
+            ></input>
+            <input
+              type={"number"}
+              placeholder={"preço"}
+              value={this.state.inputPrice}
+              onChange={this.onChangePrice}
+            ></input>
+          
+                <select
+                mode={"multiple"}
+                placeholder={"forma de pagamento"}
+                value={this.state.inputPaymentMethods}
+                onChange={this.onChangePaymentMethods}
+                >
+                <option dinheiro={"dinheiro"}>Cartão de crédito</option>
+                <option>Cartão de debito</option>
+                <option>pay pal</option>
+                <option>boleto</option>
+                <option>pix</option>
+                </select>
+        
+            <input
+              type={"date"}
+              placeholder={"prazo"}
+              value={this.state.inputDueDate}
+              onChange={this.onChangeDueDate}
+            ></input>
+            <button onClick={this.createJob}>Criar trabalho</button>
+            <button onClick={this.props.goToPageSearch}>
+              ir para página de contrato
+            </button>
+          </DivInput>
 
         )
     }
